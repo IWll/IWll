@@ -8,6 +8,5 @@ namespace IWll.BLL
 {
     public class Class1
     {
-        //dshdajsdks
     }
 }
