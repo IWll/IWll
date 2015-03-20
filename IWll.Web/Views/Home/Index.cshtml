@@ -1,1 +1,21 @@
-﻿
+﻿<!DOCTYPE html>
+<html ng-app="app" ng-controller="ManagerController">
+<head>
+    <title ng-bind="models.helloAngular"></title>
+</head>
+<body>
+    <input type="text" ng-model="models.helloAngular" />
+    <h1>{{models.helloAngular}}</h1>
+    <button ng-click="queryManager()">list</button>
+    <p>list:</p>
+    <li ng-repeat="item in managers">
+        <ul>{{item.Id}}</ul>
+        <ul>{{item.Name}}</ul>
+        <ul>{{item.Password}}</ul>
+    </li>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/Controllers/ManagerController.js"></script>
+</body>
+</html>
