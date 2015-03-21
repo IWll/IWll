@@ -182,9 +182,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\IWDA.mdf" />
-    <Content Include="App_Data\IWDA_log.ldf">
-      <DependentUpon>IWDA.mdf</DependentUpon>
+    <Content Include="App_Data\IWll.mdf" />
+    <Content Include="App_Data\IWll_log.ldf">
+      <DependentUpon>IWll.mdf</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
