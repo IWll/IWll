@@ -8,14 +8,26 @@
     <h1>{{models.helloAngular}}</h1>
     <button ng-click="queryManager()">list</button>
     <p>list:</p>
-    <li ng-repeat="item in managers">
-        <ul>{{item.Id}}</ul>
-        <ul>{{item.Name}}</ul>
-        <ul>{{item.Password}}</ul>
-    </li>
+    <ul ng-repeat="item in managers">
+        <li>{{item.Id}}</li>
+        <li>{{item.Name}}</li>
+        <li>{{item.Password}}</li>
+    </ul>
+
+    <form ng-submit="login()">
+        <label for="emailAddress">Email Address:</label>
+        <input type="text" ng-model="loginForm.name" required />
+
+        <label for="password">Password:</label>
+        <input type="password" ng-model="loginForm.password" required />
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>{{loginstatus}}</p>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-    <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/Controllers/ManagerController.js"></script>
+    <script src="~/Scripts/app.js"></script>
 </body>
 </html>

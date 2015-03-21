@@ -14,23 +14,15 @@ namespace IWll.Web.Controllers
     {
         private InterfaceManagerService managerService;
         public ManagerController() { managerService = new ManagerService(); }
-        //public IEnumerable<Manager> GetAllProducts()
-        //{
-        //    return products;
-        //}
-        //public IEnumerable<Manager> GetAllManagers()
-        //{
-
-        //    return managers;
-        //}
-        //public bool GetManager()
-        //{
-        //    return true;
-        //}
 
         public bool GetManagerLogin(string name, string password)
         {
             return managerService.Login(name, password);
+        }
+
+        public bool PostLogin(Manager manager)
+        {
+            return managerService.Login(manager.name, manager.password);
         }
         
     }
