@@ -8,5 +8,7 @@ namespace IWll.DAL
         /// 用户仓储
         /// </summary>
         public static InterfaceUserRepository UserRepository { get { return new UserRepository(); } }
+
+        public static InterfaceManagerRepository ManagerRepository { get { return new ManagerRepository(); } }
     }
 }

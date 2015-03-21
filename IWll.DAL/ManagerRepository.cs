@@ -1,0 +1,14 @@
+﻿using IWll.IDAL;
+using IWll.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IWll.DAL
+{
+    class ManagerRepository : BaseRepository<Manager>, InterfaceManagerRepository
+    {
+    }
+}
