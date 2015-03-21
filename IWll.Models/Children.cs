@@ -12,10 +12,19 @@ namespace IWll.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Manager
+    public partial class Children
     {
+        public Children()
+        {
+            this.Oldandchildren = new HashSet<Oldandchildren>();
+        }
+    
         public int id { get; set; }
+        public string contactway_1 { get; set; }
+        public string contactway_2 { get; set; }
         public string name { get; set; }
-        public string password { get; set; }
+        public string childrenaddress { get; set; }
+    
+        public virtual ICollection<Oldandchildren> Oldandchildren { get; set; }
     }
 }

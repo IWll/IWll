@@ -9,7 +9,10 @@ namespace IWll.BLL
     {
         public ManagerService() : base(RepositoryFactory.ManagerRepository) { }
 
-        public bool Login(string managerName, string password) { return CurrentRepository.Exist(u => u.ManagerName == managerName); }
+        public bool Login(string name, string password)
+        {
+            return CurrentRepository.Exist(u => u.name == name && u.password == password);
+        }
 
     }
 }

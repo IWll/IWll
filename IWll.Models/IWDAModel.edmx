@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IWll.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Children">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contactway_1" Type="nvarchar" MaxLength="20" />
+          <Property Name="contactway_2" Type="nvarchar" MaxLength="20" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="childrenaddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oldandchildren">
+          <Key>
+            <PropertyRef Name="oldid" />
+            <PropertyRef Name="childrenid" />
+          </Key>
+          <Property Name="oldid" Type="int" Nullable="false" />
+          <Property Name="childrenid" Type="int" Nullable="false" />
+          <Property Name="relationship" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Theold">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="streetid" Type="int" />
+          <Property Name="neiborcommitteeid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="old" Type="int" Nullable="false" />
+          <Property Name="idcardnumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="theaaddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="contactway_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="contactway_2" Type="nvarchar" MaxLength="20" />
+          <Property Name="contactway_3" Type="nvarchar" MaxLength="20" />
+          <Property Name="theoldpassword" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="landing_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="landing_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="landing_3" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Oldandchi__child__48CFD27E">
+          <End Role="Children" Type="Self.Children" Multiplicity="1" />
+          <End Role="Oldandchildren" Type="Self.Oldandchildren" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Children">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Oldandchildren">
+              <PropertyRef Name="childrenid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Oldandchi__oldid__49C3F6B7">
+          <End Role="Theold" Type="Self.Theold" Multiplicity="1" />
+          <End Role="Oldandchildren" Type="Self.Oldandchildren" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theold">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Oldandchildren">
+              <PropertyRef Name="oldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IWllModelsStoreContainer">
+          <EntitySet Name="Children" EntityType="Self.Children" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oldandchildren" EntityType="Self.Oldandchildren" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Theold" EntityType="Self.Theold" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Oldandchi__child__48CFD27E" Association="Self.FK__Oldandchi__child__48CFD27E">
+            <End Role="Children" EntitySet="Children" />
+            <End Role="Oldandchildren" EntitySet="Oldandchildren" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Oldandchi__oldid__49C3F6B7" Association="Self.FK__Oldandchi__oldid__49C3F6B7">
+            <End Role="Theold" EntitySet="Theold" />
+            <End Role="Oldandchildren" EntitySet="Oldandchildren" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IWll.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Theold">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="streetid" Type="Int32" />
+          <Property Name="neiborcommitteeid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="old" Type="Int32" Nullable="false" />
+          <Property Name="idcardnumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="theaaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contactway_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contactway_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="contactway_3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="theoldpassword" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="landing_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="landing_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="landing_3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Oldandchildren" Relationship="IWll.Models.FK__Oldandchi__oldid__49C3F6B7" FromRole="Theold" ToRole="Oldandchildren" />
+        </EntityType>
+        <EntityContainer Name="IWDAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Manager" EntityType="Self.Manager" />
+          <EntitySet Name="Theold" EntityType="Self.Theold" />
+          <EntitySet Name="Children" EntityType="IWll.Models.Children" />
+          <EntitySet Name="Oldandchildren" EntityType="IWll.Models.Oldandchildren" />
+          <AssociationSet Name="FK__Oldandchi__child__48CFD27E" Association="IWll.Models.FK__Oldandchi__child__48CFD27E">
+            <End Role="Children" EntitySet="Children" />
+            <End Role="Oldandchildren" EntitySet="Oldandchildren" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Oldandchi__oldid__49C3F6B7" Association="IWll.Models.FK__Oldandchi__oldid__49C3F6B7">
+            <End Role="Theold" EntitySet="Theold" />
+            <End Role="Oldandchildren" EntitySet="Oldandchildren" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Children">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contactway_1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="contactway_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="childrenaddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Oldandchildren" Relationship="IWll.Models.FK__Oldandchi__child__48CFD27E" FromRole="Children" ToRole="Oldandchildren" />
+        </EntityType>
+        <EntityType Name="Oldandchildren">
+          <Key>
+            <PropertyRef Name="oldid" />
+            <PropertyRef Name="childrenid" />
+          </Key>
+          <Property Name="oldid" Type="Int32" Nullable="false" />
+          <Property Name="childrenid" Type="Int32" Nullable="false" />
+          <Property Name="relationship" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Children" Relationship="IWll.Models.FK__Oldandchi__child__48CFD27E" FromRole="Oldandchildren" ToRole="Children" />
+          <NavigationProperty Name="Theold" Relationship="IWll.Models.FK__Oldandchi__oldid__49C3F6B7" FromRole="Oldandchildren" ToRole="Theold" />
+        </EntityType>
+        <Association Name="FK__Oldandchi__child__48CFD27E">
+          <End Type="IWll.Models.Children" Role="Children" Multiplicity="1" />
+          <End Type="IWll.Models.Oldandchildren" Role="Oldandchildren" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Children">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Oldandchildren">
+              <PropertyRef Name="childrenid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Oldandchi__oldid__49C3F6B7">
+          <End Type="IWll.Models.Theold" Role="Theold" Multiplicity="1" />
+          <End Type="IWll.Models.Oldandchildren" Role="Oldandchildren" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theold">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Oldandchildren">
+              <PropertyRef Name="oldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IWllModelsStoreContainer" CdmEntityContainer="IWDAEntities">
+          <EntitySetMapping Name="Manager">
+            <EntityTypeMapping TypeName="IWll.Models.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Theold">
+            <EntityTypeMapping TypeName="IWll.Models.Theold">
+              <MappingFragment StoreEntitySet="Theold">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="streetid" ColumnName="streetid" />
+                <ScalarProperty Name="neiborcommitteeid" ColumnName="neiborcommitteeid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="old" ColumnName="old" />
+                <ScalarProperty Name="idcardnumber" ColumnName="idcardnumber" />
+                <ScalarProperty Name="theaaddress" ColumnName="theaaddress" />
+                <ScalarProperty Name="contactway_1" ColumnName="contactway_1" />
+                <ScalarProperty Name="contactway_2" ColumnName="contactway_2" />
+                <ScalarProperty Name="contactway_3" ColumnName="contactway_3" />
+                <ScalarProperty Name="theoldpassword" ColumnName="theoldpassword" />
+                <ScalarProperty Name="landing_1" ColumnName="landing_1" />
+                <ScalarProperty Name="landing_2" ColumnName="landing_2" />
+                <ScalarProperty Name="landing_3" ColumnName="landing_3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Children">
+            <EntityTypeMapping TypeName="IWll.Models.Children">
+              <MappingFragment StoreEntitySet="Children">
+                <ScalarProperty Name="childrenaddress" ColumnName="childrenaddress" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="contactway_2" ColumnName="contactway_2" />
+                <ScalarProperty Name="contactway_1" ColumnName="contactway_1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oldandchildren">
+            <EntityTypeMapping TypeName="IWll.Models.Oldandchildren">
+              <MappingFragment StoreEntitySet="Oldandchildren">
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="childrenid" ColumnName="childrenid" />
+                <ScalarProperty Name="oldid" ColumnName="oldid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

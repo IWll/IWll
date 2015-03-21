@@ -28,9 +28,9 @@ namespace IWll.Web.Controllers
         //    return true;
         //}
 
-        public bool GetManagerLogin(Manager manager)
+        public bool GetManagerLogin(string name, string password)
         {
-            return managerService.Login(manager.ManagerName, manager.ManagerPassword);
+            return managerService.Login(name, password);
         }
         
     }

@@ -1,4 +1,5 @@
 ﻿using IWll.IDAL;
+using IWll.Models;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,7 +12,7 @@ namespace IWll.DAL
     /// </summary>
     public class BaseRepository<T> : InterfaceBaseRepository<T> where T : class
     {
-        protected IWllDbContext nContext = ContextFactory.GetCurrentContext();
+        protected IWDAEntities nContext = ContextFactory.GetCurrentContext();
 
         public T Add(T entity)
         {

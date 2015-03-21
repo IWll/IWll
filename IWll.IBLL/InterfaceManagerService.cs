@@ -13,6 +13,6 @@ namespace IWll.IBLL
         /// 管理员登陆
         /// </summary>
         /// <returns>布尔值</returns>
-        bool Login(string managerName, string password);
+        bool Login(string name, string password);
     }
 }

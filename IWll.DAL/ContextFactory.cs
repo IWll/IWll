@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using IWll.Models;
+using System.Data.Entity;
 using System.Runtime.Remoting.Messaging;
 
 namespace IWll.DAL
@@ -16,12 +17,12 @@ namespace IWll.DAL
         /// 获取当前数据上下文
         /// </summary>
         /// <returns></returns>
-        public static IWllDbContext GetCurrentContext()
+        public static IWDAEntities GetCurrentContext()
         {
-            IWllDbContext _nContext = CallContext.GetData("IWllContext") as IWllDbContext;
+            IWDAEntities _nContext = CallContext.GetData("IWllContext") as IWDAEntities;
             if (_nContext == null)
             {
-                _nContext = new IWllDbContext();
+                _nContext = new IWDAEntities();
                 CallContext.SetData("IWllContext", _nContext);
             }
             return _nContext;

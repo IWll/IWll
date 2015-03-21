@@ -12,10 +12,13 @@ namespace IWll.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Manager
+    public partial class Oldandchildren
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string password { get; set; }
+        public int oldid { get; set; }
+        public int childrenid { get; set; }
+        public string relationship { get; set; }
+    
+        public virtual Children Children { get; set; }
+        public virtual Theold Theold { get; set; }
     }
 }
